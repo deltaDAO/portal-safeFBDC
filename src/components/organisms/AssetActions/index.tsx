@@ -16,12 +16,13 @@ import { getFileInfo } from '../../../utils/provider'
 import { getOceanConfig } from '../../../utils/ocean'
 import { useCancelToken } from '../../../hooks/useCancelToken'
 import { useIsMounted } from '../../../hooks/useIsMounted'
-import { allowDynamicPricing } from '../../../../app.config'
+import { useSiteMetadata } from '../../../hooks/useSiteMetadata'
 
 export default function AssetActions(): ReactElement {
   const { accountId, balance } = useWeb3()
   const { ocean, account } = useOcean()
   const { price, ddo, isAssetNetwork } = useAsset()
+  const { allowDynamicPricing } = useSiteMetadata().appConfig
 
   const [isBalanceSufficient, setIsBalanceSufficient] = useState<boolean>()
   const [dtBalance, setDtBalance] = useState<string>()

@@ -7,11 +7,12 @@ import Debug from './Debug'
 import { ReactComponent as Caret } from '../../../images/caret.svg'
 import useDarkMode from 'use-dark-mode'
 import Appearance from './Appearance'
-import { allowDynamicPricing, darkModeConfig } from '../../../../app.config'
 import TokenApproval from './TokenApproval'
+import { useSiteMetadata } from '../../../hooks/useSiteMetadata'
 
 export default function UserPreferences(): ReactElement {
   // Calling this here because <Style /> is not mounted on first load
+  const { allowDynamicPricing, darkModeConfig } = useSiteMetadata().appConfig
   const darkMode = useDarkMode(false, darkModeConfig)
 
   return (

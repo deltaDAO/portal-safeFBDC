@@ -9,8 +9,7 @@ import { useLocation } from '@reach/router'
 import styles from './index.module.css'
 import OceanProvider from '../../../../providers/Ocean'
 import { useWeb3 } from '../../../../providers/Web3'
-import { allowDynamicPricing } from '../../../../../app.config'
-import { useAddressConfig } from '../../../../hooks/useAddressConfig'
+import { useSiteMetadata } from '../../../../hooks/useSiteMetadata'
 
 interface HistoryTab {
   title: string
@@ -20,7 +19,6 @@ interface HistoryTab {
 function getTabs(
   accountId: string,
   userAccountId: string,
-  isAddressWhiteListed: boolean,
   allowDynamicPricing: string
 ): HistoryTab[] {
   const defaultTabs: HistoryTab[] = [
@@ -52,12 +50,11 @@ function getTabs(
   if (accountId === userAccountId) {
     defaultTabs.push(computeTab)
   }
-  if (isAddressWhiteListed) {
-    defaultTabs.unshift({
-      title: 'Published',
-      content: <PublishedList accountId={accountId} />
-    })
-  }
+  defaultTabs.unshift({
+    title: 'Published',
+    content: <PublishedList accountId={accountId} />
+  })
+
   return defaultTabs
 }
 
@@ -68,17 +65,11 @@ export default function HistoryPage({
 }): ReactElement {
   const { accountId } = useWeb3()
   const location = useLocation()
-  const isAddressWhiteListed =
-    useAddressConfig().isAddressWhitelisted(accountId)
+  const { allowDynamicPricing } = useSiteMetadata().appConfig
 
   const url = new URL(location.href)
   const defaultTab = url.searchParams.get('defaultTab')
-  const tabs = getTabs(
-    accountIdentifier,
-    accountId,
-    isAddressWhiteListed,
-    allowDynamicPricing
-  )
+  const tabs = getTabs(accountIdentifier, accountId, allowDynamicPricing)
 
   let defaultTabIndex = 0
   defaultTab === 'ComputeJobs' ? (defaultTabIndex = 4) : (defaultTabIndex = 0)

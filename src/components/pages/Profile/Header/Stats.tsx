@@ -13,7 +13,7 @@ import NumberUnit from '../../../molecules/NumberUnit'
 import styles from './Stats.module.css'
 import { useProfile } from '../../../../providers/Profile'
 import { PoolShares_poolShares as PoolShare } from '../../../../@types/apollo/PoolShares'
-import { allowDynamicPricing } from '../../../../../app.config'
+import { useSiteMetadata } from '../../../../hooks/useSiteMetadata'
 
 async function getPoolSharesLiquidity(
   poolShares: PoolShare[]
@@ -35,6 +35,7 @@ export default function Stats({
 }): ReactElement {
   const { chainIds } = useUserPreferences()
   const { poolShares, assets, assetsTotal, sales } = useProfile()
+  const { allowDynamicPricing } = useSiteMetadata().appConfig
 
   const [publisherLiquidity, setPublisherLiquidity] = useState<UserLiquidity>()
   const [totalLiquidity, setTotalLiquidity] = useState(0)
