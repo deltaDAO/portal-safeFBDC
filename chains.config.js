@@ -22,4 +22,16 @@ const chains = [
   }
 ]
 
-module.exports = chains
+const getDefaultChainIds = () => {
+  return chains.filter((chain) => chain.isDefault).map((c) => c.networkId)
+}
+
+const getSupportedChainIds = () => {
+  return chains.map((c) => c.networkId)
+}
+
+module.exports = {
+  chains,
+  getDefaultChainIds,
+  getSupportedChainIds
+}
