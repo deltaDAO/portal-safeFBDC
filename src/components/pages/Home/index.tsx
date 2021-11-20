@@ -1,7 +1,11 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import AssetList from '../../organisms/AssetList'
 import Button from '../../atoms/Button'
-import { generateBaseQuery, queryMetadata } from '../../../utils/aquarius'
+import {
+  generateBaseQuery,
+  getFilterTerm,
+  queryMetadata
+} from '../../../utils/aquarius'
 import Permission from '../../organisms/Permission'
 import { DDO, Logger } from '@oceanprotocol/lib'
 import { useUserPreferences } from '../../../providers/UserPreferences'
@@ -9,7 +13,12 @@ import styles from './index.module.css'
 import { useIsMounted } from '../../../hooks/useIsMounted'
 import { useCancelToken } from '../../../hooks/useCancelToken'
 import { SearchQuery } from '../../../models/aquarius/SearchQuery'
-import { SortOptions, SortTermOptions } from '../../../models/SortAndFilters'
+import {
+  SortDirectionOptions,
+  SortOptions,
+  SortTermOptions
+} from '../../../models/SortAndFilters'
+import { useAddressConfig } from '../../../hooks/useAddressConfig'
 import { BaseQueryParams } from '../../../models/aquarius/BaseQueryParams'
 import { PagedAssets } from '../../../models/PagedAssets'
 import Header from './Header'
@@ -116,20 +125,31 @@ function SectionQueryResult({
 export default function HomePage(): ReactElement {
   const [queryLatest, setQueryLatest] = useState<SearchQuery>()
   const { chainIds } = useUserPreferences()
+  const { featured, hasFeaturedAssets } = useAddressConfig()
 
   const data = useStaticQuery(topicQuery)
   const { topics } = data.file.childHomeJson
 
   useEffect(() => {
+    const queryParams = {
+      esPaginationOptions: {
+        size: hasFeaturedAssets() ? featured.length : 9
+      },
+      filters: hasFeaturedAssets() ? [getFilterTerm('id', featured)] : undefined
+    }
+
     const baseParams = {
+      ...queryParams,
       chainIds: chainIds,
-      esPaginationOptions: { size: 3 },
       sortOptions: {
-        sortBy: SortTermOptions.Created
+        sortBy: SortTermOptions.Created,
+        sortDirection: SortDirectionOptions.Ascending
       } as SortOptions
     } as BaseQueryParams
 
-    setQueryLatest(generateBaseQuery(baseParams))
+    const latestOrFeaturedQuery = generateBaseQuery(baseParams)
+
+    setQueryLatest(latestOrFeaturedQuery)
   }, [chainIds])
 
   return (
@@ -148,7 +168,9 @@ export default function HomePage(): ReactElement {
         <>
           {queryLatest && (
             <SectionQueryResult
-              title="browse our data services"
+              title={
+                hasFeaturedAssets() ? 'Featured Assets' : 'Recently Published'
+              }
               query={queryLatest}
               action={
                 <Button style="text" to="/search?sort=created&sortOrder=desc">
