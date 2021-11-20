@@ -12,11 +12,11 @@ import { useAsset } from '../../../providers/Asset'
 import { useOcean } from '../../../providers/Ocean'
 import { useWeb3 } from '../../../providers/Web3'
 import Web3Feedback from '../../molecules/Web3Feedback'
-import { fileinfo, getFileInfo } from '../../../utils/provider'
-import axios from 'axios'
+import { getFileInfo } from '../../../utils/provider'
 import { getOceanConfig } from '../../../utils/ocean'
 import { useCancelToken } from '../../../hooks/useCancelToken'
 import { useIsMounted } from '../../../hooks/useIsMounted'
+import { allowDynamicPricing } from '../../../../app.config'
 
 export default function AssetActions(): ReactElement {
   const { accountId, balance } = useWeb3()
@@ -129,6 +129,7 @@ export default function AssetActions(): ReactElement {
   ]
 
   price?.type === 'pool' &&
+    allowDynamicPricing === 'true' &&
     tabs.push(
       {
         title: 'Pool',

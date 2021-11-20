@@ -7,7 +7,7 @@ import Debug from './Debug'
 import { ReactComponent as Caret } from '../../../images/caret.svg'
 import useDarkMode from 'use-dark-mode'
 import Appearance from './Appearance'
-import { darkModeConfig } from '../../../../app.config'
+import { allowDynamicPricing, darkModeConfig } from '../../../../app.config'
 import TokenApproval from './TokenApproval'
 
 export default function UserPreferences(): ReactElement {
@@ -19,7 +19,7 @@ export default function UserPreferences(): ReactElement {
       content={
         <ul className={styles.preferencesDetails}>
           <Currency />
-          <TokenApproval />
+          {allowDynamicPricing === 'true' && <TokenApproval />}
           <Appearance darkMode={darkMode} />
           <Debug />
         </ul>

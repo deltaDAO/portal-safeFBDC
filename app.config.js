@@ -13,7 +13,7 @@ module.exports = {
   chainIds: [3, 4],
 
   // List of all supported chainIds. Used to populate the Chains user preferences list.
-  chainIdsSupported: [3, 4, 2021000, 2021001],
+  chainIdsSupported: [3, 4, 2021000],
 
   rbacUrl: process.env.GATSBY_RBAC_URL,
 
