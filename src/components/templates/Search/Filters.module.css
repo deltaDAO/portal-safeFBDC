@@ -20,7 +20,7 @@ button.filter,
 .filter:hover,
 .filter:active,
 .filter:focus {
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--color-secondary);
   border-radius: var(--border-radius);
   margin-right: calc(var(--spacer) / 6);
   margin-bottom: calc(var(--spacer) / 6);
@@ -31,17 +31,15 @@ button.filter,
   padding: calc(var(--spacer) / 6) !important;
 }
 
-.filter:hover,
-.filter:focus {
-  color: var(--font-color-text);
-  background: inherit;
+.filter:hover {
   transform: none;
+  color: var(--brand-white);
+  background: var(--color-secondary);
 }
 
 .filter.selected {
-  color: var(--background-body);
-  background: var(--font-color-text);
-  border-color: var(--background-body);
+  color: var(--brand-white);
+  background: var(--color-secondary);
 }
 
 .filter.selected::after {
@@ -50,16 +48,17 @@ button.filter,
   color: var(--background-body);
 }
 
-.showClear:hover {
-  display: inline-flex;
-  color: var(--color-primary);
-}
 .showClear {
   display: inline-flex;
   text-transform: capitalize;
   color: var(--color-secondary);
   font-weight: var(--font-weight-base);
   margin-left: calc(var(--spacer) / 6);
+}
+
+.showClear:hover {
+  display: inline-flex;
+  font-weight: bold;
 }
 
 .hideClear {

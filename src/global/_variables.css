@@ -11,15 +11,16 @@
   --brand-violet: #e000cf;
   --brand-blue: #263475;
   --brand-orange: #e75b24;
+  --brand-dark-blue: #003a5d;
 
   --brand-grey-darker: #201f1f;
   --brand-grey-dark: #303030;
   --brand-grey: #41474e;
   --brand-grey-light: #8b98a9;
   --brand-grey-lighter: #e2e2e2;
-  --brand-grey-dimmed: #f7f7f7;
+  --brand-grey-dimmed: #2634750f;
 
-  --brand-gradient: linear-gradient(to right, #263475, #e75b24);
+  --brand-gradient: linear-gradient(to right top, #263475, #e75b24);
 
   --brand-alert-green: #5fb359;
   --brand-alert-red: #d80606;
@@ -30,7 +31,7 @@
   --color-secondary: #263475;
 
   /* Only use these vars for most color referencing for easy light/dark mode */
-  --font-color-text: var(--brand-grey);
+  --font-color-text: var(--brand-dark-blue);
   --font-color-heading: var(--brand-blue);
   --background-body: var(--brand-white);
   --background-content: var(--brand-white);

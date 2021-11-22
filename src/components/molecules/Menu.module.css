@@ -102,7 +102,7 @@
   display: block;
   padding: calc(var(--spacer) / 4) calc(var(--spacer) / 2);
   text-transform: lowercase;
-  color: var(--brand-blue);
+  color: var(--color-secondary);
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-large);
   position: relative;
@@ -114,28 +114,28 @@
 .actions button,
 .actions div[class*='tooltip'],
 .actions div[class*='network'] {
-  border-color: var(--brand-blue);
+  border-color: var(--color-secondary);
   background: transparent;
 }
 
 .actions svg {
-  fill: var(--brand-blue) !important;
+  fill: var(--color-secondary) !important;
 }
 .actions *:hover svg:not(*[class*='searchIcon']) {
-  fill: var(--brand-blue) !important;
+  fill: var(--color-secondary) !important;
 }
 
 .actions,
 .link:hover,
 .link:focus,
 .link:active {
-  color: var(--brand-blue);
+  color: var(--color-secondary);
 }
 
 .link[aria-current],
 .link[aria-current]:hover,
 .link[aria-current]:focus {
-  color: var(--brand-blue);
+  color: var(--color-secondary);
 }
 
 .link:hover:after,
