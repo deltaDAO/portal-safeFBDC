@@ -10,20 +10,22 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-.partner {
-  border: 3px solid var(--background-content);
-}
+@media (min-width: 40rem) {
+  .partner {
+    border: 3px solid var(--background-content);
+  }
 
-.partner:hover {
-  border: 3px solid var(--border-color);
-  transition: 300ms ease 0s;
-}
+  .partner:hover {
+    border: 3px solid var(--border-color);
+    transition: 300ms ease 0s;
+  }
 
-.partner img {
-  filter: grayscale(85%);
-}
+  .partner img {
+    filter: grayscale(85%);
+  }
 
-.partner img:hover {
-  filter: grayscale(0%);
-  transition: filter 300ms ease 0s;
+  .partner img:hover {
+    filter: grayscale(0%);
+    transition: filter 300ms ease 0s;
+  }
 }

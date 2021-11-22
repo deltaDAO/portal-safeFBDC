@@ -54,7 +54,7 @@
 .primary:hover,
 .primary:focus,
 .primary:active {
-  background: var(--brand-gradient);
+  background: var(--color-primary);
 }
 
 .ghost,
