@@ -1,0 +1,33 @@
+.container {
+  margin-top: var(--spacer);
+}
+
+.title {
+  text-align: center;
+}
+
+.list {
+  width: 100%;
+  padding: 0 var(--spacer);
+  display: grid;
+  grid-gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.partner {
+  border: 3px solid var(--background-content);
+}
+
+.partner:hover {
+  border: 3px solid var(--border-color);
+  transition: 300ms ease 0s;
+}
+
+.partner img {
+  filter: grayscale(85%);
+}
+
+.partner img:hover {
+  filter: grayscale(0%);
+  transition: filter 300ms ease 0s;
+}
