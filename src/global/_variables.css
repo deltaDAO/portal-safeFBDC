@@ -26,7 +26,7 @@
 
   /* Only use these vars for most color referencing for easy light/dark mode */
   --font-color-text: var(--brand-grey);
-  --font-color-heading: var(--brand-black);
+  --font-color-heading: var(--brand-blue);
   --background-body: var(--brand-white);
   --background-content: var(--brand-white);
   --background-body-transparent: rgba(255, 255, 255, 0.8);
@@ -60,7 +60,7 @@
   --line-height: 1.6;
 
   --spacer: 2rem;
-  --border-radius: 0.2rem;
+  --border-radius: 0;
 
   --layout-max-width: 85rem;
   --checkbox-size: 1.6em;
