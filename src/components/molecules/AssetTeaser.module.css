@@ -24,7 +24,7 @@
   hyphens: auto;
   /* for sticking footer to bottom */
   flex: 1;
-  color: var(--color-secondary);
+  color: var(--font-color-text);
 }
 
 .content p {
@@ -63,7 +63,7 @@
   right: calc(var(--spacer) / 3);
   width: auto;
   font-size: var(--font-size-mini);
-  color: var(--color-secondary);
+  color: var(--font-color-text);
 }
 
 .network {
@@ -71,5 +71,5 @@
   right: calc(var(--spacer) / 3);
   bottom: calc(var(--spacer) / 3);
   font-size: var(--font-size-mini);
-  color: var(--color-secondary);
+  color: var(--font-color-text);
 }
