@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Moderat';
+  src: local('Moderat'), url('../fonts/Moderat-Regular.otf') format('truetype');
+}
+
 :root {
   --brand-white: #ffffff;
   --brand-black: #141414;
@@ -34,9 +39,9 @@
   --border-color: var(--brand-grey-lighter);
   --box-shadow-color: rgba(0, 0, 0, 0.05);
 
-  --font-family-base: 'Overpass', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+  --font-family-base: 'Moderat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Helvetica, Arial, sans-serif;
-  --font-family-heading: 'Overpass', -apple-system, BlinkMacSystemFont,
+  --font-family-heading: 'Moderat', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Helvetica, Arial, sans-serif;
   --font-family-monospace: 'Overpass Mono', 'Fira Mono', Menlo, Monaco, Consolas,
     'Courier New', monospace;
