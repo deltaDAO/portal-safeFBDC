@@ -18,11 +18,11 @@
 
 .button,
 .address {
-  color: var(--brand-grey-lighter);
+  color: var(--brand-blue);
 }
 
 .button:hover .address {
-  color: var(--brand-grey-dimmed);
+  color: var(--brand-blue);
 }
 
 .button:hover,
@@ -48,7 +48,7 @@
 .address {
   display: none;
   text-transform: none;
-  border-right: 1px solid var(--brand-grey-lighter);
+  border-right: 1px solid var(--brand-blue);
   padding-right: calc(var(--spacer) / 3);
   padding-left: calc(var(--spacer) / 8);
 }

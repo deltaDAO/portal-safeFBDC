@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { ReactComponent as LogoAssetFull } from '@oceanprotocol/art/logo/logo.svg'
-import { ReactComponent as LogoAssetBranding } from '../../images/logo.svg'
+import LogoAssetBranding from '../../images/logo.png'
 import { ReactComponent as LogoAsset } from '../../images/ocean-logo.svg'
 
 import styles from './Logo.module.css'
@@ -14,7 +14,7 @@ export default function Logo({
 }): ReactElement {
   return branding ? (
     <>
-      <LogoAssetBranding className={styles.brand} />
+      <img src={LogoAssetBranding} className={styles.brand} alt="logo" />
     </>
   ) : noWordmark ? (
     <LogoAsset className={styles.logo} />

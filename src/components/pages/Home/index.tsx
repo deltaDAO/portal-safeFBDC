@@ -22,11 +22,11 @@ import { useAddressConfig } from '../../../hooks/useAddressConfig'
 import { BaseQueryParams } from '../../../models/aquarius/BaseQueryParams'
 import { PagedAssets } from '../../../models/PagedAssets'
 import Header from './Header'
-import Boxes from './Boxes'
 import Topic, { TTopic } from './Topic'
 import { graphql, useStaticQuery } from 'gatsby'
 import { ReactComponent as Education } from '../../../images/education.svg'
 import { ReactComponent as DataEconomy } from '../../../images/data_economy.svg'
+import Partners from './Partners'
 
 const topicQuery = graphql`
   query TopicQuery {
@@ -155,7 +155,7 @@ export default function HomePage(): ReactElement {
   return (
     <>
       <Header />
-      <Boxes />
+      <Partners />
       {(topics as TTopic[]).map((topic, i) => (
         <Topic
           key={topic.title}

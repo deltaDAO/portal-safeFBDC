@@ -54,7 +54,7 @@
 .primary:hover,
 .primary:focus,
 .primary:active {
-  background: var(--brand-gradient);
+  background: var(--color-primary);
 }
 
 .ghost,
@@ -75,7 +75,7 @@
   padding: 0;
   display: inline-block;
   background: 0;
-  color: var(--brand-pink);
+  color: var(--color-primary);
   box-shadow: none;
   cursor: pointer;
   min-width: auto;

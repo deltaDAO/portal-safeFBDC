@@ -4,6 +4,8 @@
   --brand-pink: #ff4092;
   --brand-purple: #7b1173;
   --brand-violet: #e000cf;
+  --brand-blue: #263475;
+  --brand-orange: #e75b24;
 
   --brand-grey-darker: #201f1f;
   --brand-grey-dark: #303030;
@@ -12,19 +14,19 @@
   --brand-grey-lighter: #e2e2e2;
   --brand-grey-dimmed: #f7f7f7;
 
-  --brand-gradient: linear-gradient(to right bottom, #7b1173, #ff4092);
+  --brand-gradient: linear-gradient(to right, #263475, #e75b24);
 
   --brand-alert-green: #5fb359;
   --brand-alert-red: #d80606;
   --brand-alert-orange: #b35f36;
   --brand-alert-yellow: #eac146;
 
-  --color-primary: #ff4092;
-  --color-secondary: #8b98a9;
+  --color-primary: #e75b24;
+  --color-secondary: #263475;
 
   /* Only use these vars for most color referencing for easy light/dark mode */
   --font-color-text: var(--brand-grey);
-  --font-color-heading: var(--brand-black);
+  --font-color-heading: var(--brand-blue);
   --background-body: var(--brand-white);
   --background-content: var(--brand-white);
   --background-body-transparent: rgba(255, 255, 255, 0.8);
@@ -58,7 +60,7 @@
   --line-height: 1.6;
 
   --spacer: 2rem;
-  --border-radius: 0.2rem;
+  --border-radius: 0;
 
   --layout-max-width: 85rem;
   --checkbox-size: 1.6em;
@@ -67,15 +69,4 @@
   --break-point--medium: 860px;
   --break-point--large: 1140px;
   --break-point--huge: 1400px;
-}
-
-.dark {
-  --font-color-text: var(--brand-grey-lighter);
-  --font-color-heading: var(--brand-grey-dimmed);
-  --background-content: var(--brand-black);
-  --background-body: var(--brand-black);
-  --background-body-transparent: rgba(20, 20, 20, 0.9);
-  --background-highlight: var(--brand-grey-darker);
-  --border-color: var(--brand-grey-dark);
-  --box-shadow-color: rgba(0, 0, 0, 0.2);
 }
