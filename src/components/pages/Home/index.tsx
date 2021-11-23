@@ -22,10 +22,11 @@ import { useAddressConfig } from '../../../hooks/useAddressConfig'
 import { BaseQueryParams } from '../../../models/aquarius/BaseQueryParams'
 import { PagedAssets } from '../../../models/PagedAssets'
 import Header from './Header'
+import Intro from './Intro'
 import Topic, { TTopic } from './Topic'
 import { graphql, useStaticQuery } from 'gatsby'
-import { ReactComponent as Education } from '../../../images/education.svg'
-import { ReactComponent as DataEconomy } from '../../../images/data_economy.svg'
+import logoFull from '../../../images/safe_FBDC_logo.png'
+import logoGradient from '../../../images/logo_gradient.png'
 import Partners from './Partners'
 
 const topicQuery = graphql`
@@ -36,10 +37,6 @@ const topicQuery = graphql`
           svg
           title
           content
-          cta {
-            call
-            action
-          }
         }
       }
     }
@@ -47,8 +44,8 @@ const topicQuery = graphql`
 `
 
 const topicSvgMap = {
-  education: <Education />,
-  data_economy: <DataEconomy />
+  data_sovereignty: <img src={logoFull} />,
+  ai_sovereignty: <img src={logoGradient} />
 }
 
 function sortElements(items: DDO[], sorted: string[]) {
@@ -154,8 +151,8 @@ export default function HomePage(): ReactElement {
 
   return (
     <>
+      <Intro />
       <Header />
-      <Partners />
       {(topics as TTopic[]).map((topic, i) => (
         <Topic
           key={topic.title}
@@ -164,6 +161,7 @@ export default function HomePage(): ReactElement {
           mirror={i % 2 === 1}
         />
       ))}
+      <Partners />
       <Permission eventType="browse">
         <>
           {queryLatest && (

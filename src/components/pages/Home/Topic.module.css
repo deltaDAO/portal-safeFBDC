@@ -1,5 +1,5 @@
 .container {
-  margin: calc(var(--spacer) * 6) 0;
+  margin: var(--spacer);
 }
 
 @media screen and (min-width: 50rem) {
@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: right;
+    text-align: left;
   }
 
   .container.mirror {
@@ -29,8 +29,7 @@
   padding: var(--spacer);
 }
 
-.content h3 {
-  text-transform: lowercase;
+.content h2 {
   font-size: var(--font-size-h1);
 }
 
@@ -39,4 +38,26 @@
   display: block;
   margin: var(--spacer) auto;
   margin-right: auto;
+}
+
+.index {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.container.mirror .index {
+  align-items: flex-start;
+}
+
+.fractionNumber {
+  margin: 0;
+  width: min-content;
+  font-size: var(--font-size-h3);
+  font-weight: bold;
+  color: var(--brand-grey-lighter);
+}
+
+.fractionNumber:first-of-type {
+  border-bottom: 1px solid var(--brand-grey-lighter);
 }

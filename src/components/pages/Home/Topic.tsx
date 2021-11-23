@@ -7,7 +7,7 @@ import styles from './Topic.module.css'
 const cx = classNames.bind(styles)
 
 export type TTopic = {
-  svg: 'education' | 'data_economy'
+  svg: 'data_sovereignty' | 'ai_sovereignty'
   title: string
   content: string
   cta?: {
@@ -31,7 +31,11 @@ export default function Topic({
     <div className={containerClasses}>
       <div className={styles.svg}>{svgComponent}</div>
       <div className={styles.content}>
-        <h3>{topic.title}</h3>
+        <div className={styles.index}>
+          <p className={styles.fractionNumber}>20</p>
+          <p className={styles.fractionNumber}>21</p>
+        </div>
+        <h2>{topic.title}</h2>
         <Markdown text={topic.content} />
         {topic.cta && (
           <Button to={topic.cta.action} style="primary" target="_blank">
