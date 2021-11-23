@@ -30,6 +30,7 @@
 .datatoken {
   white-space: pre;
   margin-right: calc(var(--spacer) / 3);
+  color: var(--color-primary);
 }
 
 .byline {

@@ -18,11 +18,6 @@
   filter: drop-shadow(0 4px 6px var(--box-shadow-color));
 }
 
-.bookmark:hover,
-.bookmark:focus {
-  transform: translate3d(0, -3px, 0);
-}
-
 .bookmark.active svg {
-  fill: var(--brand-violet);
+  fill: var(--color-primary);
 }

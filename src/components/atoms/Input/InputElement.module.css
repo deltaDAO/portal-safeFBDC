@@ -18,7 +18,7 @@
 }
 
 .input:focus {
-  border-color: var(--font-color-text);
+  border-color: var(--color-secondary);
   box-shadow: none;
   outline: 0;
 }
