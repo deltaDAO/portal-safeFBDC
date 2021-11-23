@@ -23,6 +23,7 @@
   text-transform: uppercase;
   color: var(--color-secondary);
   font-size: var(--font-size-small);
+  font-weight: bold;
 }
 
 .sorted {
@@ -32,7 +33,7 @@
   color: var(--color-secondary);
   text-transform: capitalize;
   border-radius: 0;
-  font-weight: var(--font-weight-base);
+  font-weight: bold;
   background: var(--background-content);
   box-shadow: none;
 }
