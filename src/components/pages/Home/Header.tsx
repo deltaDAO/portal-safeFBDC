@@ -4,25 +4,21 @@ import Markdown from '../../atoms/Markdown'
 import styles from './Header.module.css'
 
 const contentQuery = graphql`
-  query Header {
-    intro: allMarkdownRemark(
-      filter: { fileAbsolutePath: { regex: "/.+\/pages\/home\/.+\\.md/"}}) 
-     {
-      edges {
-        node {
-          frontmatter {
-            title
-          }
-          rawMarkdownBody
-        }
+  query HeaderQuery {
+    intro: markdownRemark(
+      fileAbsolutePath: { regex: "/pages/home/header.md$/" }
+    ) {
+      frontmatter {
+        title
       }
+      rawMarkdownBody
     }
   }
 `
 
 export default function Header(): ReactElement {
   const data = useStaticQuery(contentQuery)
-  const { frontmatter, rawMarkdownBody } = data.intro.edges[0].node
+  const { frontmatter, rawMarkdownBody } = data.intro
 
   return (
     <div className={styles.container}>

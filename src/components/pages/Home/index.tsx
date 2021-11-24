@@ -23,30 +23,8 @@ import { BaseQueryParams } from '../../../models/aquarius/BaseQueryParams'
 import { PagedAssets } from '../../../models/PagedAssets'
 import Header from './Header'
 import Intro from './Intro'
-import Topic, { TTopic } from './Topic'
-import { graphql, useStaticQuery } from 'gatsby'
-import logoFull from '../../../images/safe_FBDC_logo.png'
-import logoGradient from '../../../images/logo_gradient.png'
+import Topics from './Topics'
 import Partners from './Partners'
-
-const topicQuery = graphql`
-  query TopicQuery {
-    file(relativePath: { eq: "pages/home/topics.json" }) {
-      childHomeJson {
-        topics {
-          svg
-          title
-          content
-        }
-      }
-    }
-  }
-`
-
-const topicSvgMap = {
-  data_sovereignty: <img src={logoFull} />,
-  ai_sovereignty: <img src={logoGradient} />
-}
 
 function sortElements(items: DDO[], sorted: string[]) {
   items.sort(function (a, b) {
@@ -124,9 +102,6 @@ export default function HomePage(): ReactElement {
   const { chainIds } = useUserPreferences()
   const { featured, hasFeaturedAssets } = useAddressConfig()
 
-  const data = useStaticQuery(topicQuery)
-  const { topics } = data.file.childHomeJson
-
   useEffect(() => {
     const queryParams = {
       esPaginationOptions: {
@@ -153,14 +128,7 @@ export default function HomePage(): ReactElement {
     <>
       <Intro />
       <Header />
-      {(topics as TTopic[]).map((topic, i) => (
-        <Topic
-          key={topic.title}
-          svgComponent={topicSvgMap[topic.svg]}
-          topic={topic}
-          mirror={i % 2 === 1}
-        />
-      ))}
+      <Topics />
       <Partners />
       <Permission eventType="browse">
         <>
