@@ -2,13 +2,13 @@
   "topics": [
     {
       "svg": "data_sovereignty",
-      "title": "Data sovereignty is good…",
+      "title": "Data sovereignty is good...",
       "content": "**Data sovereignty** can be defined as the ability for European citizens, businesses, policy makers and other actors to control who **accesses**, **processes** and **alters** their **data**, and **where it is stored**.The **FBDC** projects drives data sovereignty. It aims to create large datasets based on **European** rules, invest in **European** data capabilities and infrastructures, and **empower** corporates, individuals, and SMEs. At the same time, data sovereignty is a **necessary** but **insufficient** condition for **AI sovereignty**!"
     },
     {
       "svg": "ai_sovereignty",
-      "title": "… but AI sovereignty is better!",
-      "content": "**AI sovereignty** for Europe is the ability to **access** the **most advanced** AI-enabling **technologies** and data on a **global level**, applied according to **European rules** and **values**. In the context of **FBDC**, we establish a **sovereign AI infrastructure** for the selected use cases and also as a **pioneering example** for the **financial industry in Europe**. We pursue different **strategic fields of action**: Develop **own AI methods** and **tools**, Reaching AI sovereignty, whilst not loosing AI competitivness and leverage digital capabilities in the context of **explainable AI** (XAI)."
+      "title": "... but AI sovereignty is better!",
+      "content": "**AI sovereignty** for Europe is the ability to **access** the **most advanced** AI-enabling **technologies** and data on a **global level**, applied according to **European rules** and **values**. In the context of **FBDC**, we establish a **sovereign AI infrastructure** for the selected use cases and also as a **pioneering example** for the **financial industry in Europe**. We pursue different **strategic fields of action**: Develop **own AI methods** and **tools**, Reaching AI sovereignty, while not losing AI competitiveness and leveraging digital capabilities in the context of **explainable AI** (XAI)."
     }
   ]
 }
