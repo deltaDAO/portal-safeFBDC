@@ -21,8 +21,8 @@ import {
 import { useAddressConfig } from '../../../hooks/useAddressConfig'
 import { BaseQueryParams } from '../../../models/aquarius/BaseQueryParams'
 import { PagedAssets } from '../../../models/PagedAssets'
-import Header from './Header'
 import Intro from './Intro'
+import Header from './Header'
 import Topics from './Topics'
 import Partners from './Partners'
 
