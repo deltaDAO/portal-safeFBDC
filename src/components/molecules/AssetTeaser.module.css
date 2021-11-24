@@ -3,6 +3,11 @@
   height: 100%;
 }
 
+.teaser:hover {
+  transition: 0.2s ease-in-out;
+  box-shadow: 0 6px 17px 0 var(--box-shadow-color);
+}
+
 .link {
   composes: box from '../atoms/Box.module.css';
   position: relative;
