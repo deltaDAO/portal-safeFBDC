@@ -13,6 +13,11 @@
   flex-direction: column;
 }
 
+.content {
+  text-align: center;
+  margin-bottom: calc(var(--spacer) * 3);
+}
+
 @media (min-width: 52rem) {
   .list {
     display: grid;
