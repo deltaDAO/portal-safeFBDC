@@ -1,8 +1,16 @@
 {
+      "title": "Consortial Partners",
+      "content": "Deloitte Consulting GmbH, Deutsche Börse AG, Frankfurt School of Finance and Management, Fraunhofer-Institut für Materialfluss und Logistik (IML), HAWK:AI GmbH, Helaba Landesbank Hessen-Thüringen, Main Incubator GmbH, SAP Fioneer Solutions GmbH, spotixx GmbH, Tech-Quartier – FinTech Community Frankfurt GmbH, Technische Universität Darmstadt"
+    },
+{
   "partners": [
     { "name": "deloitte", "website": "https://deloitte.com/" },
     { "name": "sap_fioneer", "website": "https://sapfioneer.com/" },
     { "name": "spotixx", "website": "https://spotixx.com/" },
     { "name": "tech_quartier", "website": "https://techquartier.com/" }
   ]
+   },
+{
+      "title": "Contact",
+      "content": "Dr. Sebastian Schäfer, TechQuartier - FinTech Community Frankfurt GmbH, [schaefer@techquartier.com](schaefer@techquartier.com)"
 }
