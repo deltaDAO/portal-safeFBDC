@@ -1,34 +1,41 @@
-.logoText {
-  margin: var(--spacer) auto;
-  max-width: 80%;
+.container {
+  margin: var(--spacer);
 }
 
-.dataXChange {
-  max-width: 50%;
+@media screen and (min-width: 60rem) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content {
+    margin-left: calc(var(--spacer) * 2);
+  }
 }
 
-.dataXChange div[class*='conic'] {
-  width: 100%;
-  height: 100%;
-  background: var(--brand-pink);
-  background-image: conic-gradient(
-    from 180deg,
-    var(--brand-pink),
-    var(--brand-violet)
-  );
+.content {
+  padding: var(--spacer);
 }
 
-.tagLine {
+.content h2 {
   font-size: var(--font-size-h1);
-  font-weight: var(--font-weight-heavy);
-  color: var(--brand-grey-dimmed);
-  margin-top: calc(var(--spacer) * 4);
-  margin-bottom: calc(var(--spacer) * 2);
-  text-transform: lowercase;
+  font-weight: bold;
 }
 
-.tagLine span {
-  background: var(--brand-gradient);
-  padding: 0 calc(var(--spacer) / 6);
-  line-height: var(--line-height);
+.index {
+  display: flex;
+  flex-direction: column;
+}
+
+.fractionNumber {
+  margin: 0;
+  width: min-content;
+  font-size: var(--font-size-h3);
+  font-weight: bold;
+  color: var(--brand-grey-lighter);
+}
+
+.fractionNumber:first-of-type {
+  border-bottom: 1px solid var(--brand-grey-lighter);
 }

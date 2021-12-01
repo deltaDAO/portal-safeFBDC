@@ -1,0 +1,8 @@
+{
+  "partners": [
+    { "name": "deloitte", "website": "https://deloitte.com/" },
+    { "name": "sap_fioneer", "website": "https://sapfioneer.com/" },
+    { "name": "spotixx", "website": "https://spotixx.com/" },
+    { "name": "tech_quartier", "website": "https://techquartier.com/" }
+  ]
+}

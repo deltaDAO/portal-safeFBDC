@@ -21,35 +21,10 @@ import {
 import { useAddressConfig } from '../../../hooks/useAddressConfig'
 import { BaseQueryParams } from '../../../models/aquarius/BaseQueryParams'
 import { PagedAssets } from '../../../models/PagedAssets'
+import Intro from './Intro'
 import Header from './Header'
-import Boxes from './Boxes'
-import Topic, { TTopic } from './Topic'
-import { graphql, useStaticQuery } from 'gatsby'
-import { ReactComponent as Education } from '../../../images/education.svg'
-import { ReactComponent as DataEconomy } from '../../../images/data_economy.svg'
-
-const topicQuery = graphql`
-  query TopicQuery {
-    file(relativePath: { eq: "pages/home/topics.json" }) {
-      childHomeJson {
-        topics {
-          svg
-          title
-          content
-          cta {
-            call
-            action
-          }
-        }
-      }
-    }
-  }
-`
-
-const topicSvgMap = {
-  education: <Education />,
-  data_economy: <DataEconomy />
-}
+import Topics from './Topics'
+import Partners from './Partners'
 
 function sortElements(items: DDO[], sorted: string[]) {
   items.sort(function (a, b) {
@@ -127,9 +102,6 @@ export default function HomePage(): ReactElement {
   const { chainIds } = useUserPreferences()
   const { featured, hasFeaturedAssets } = useAddressConfig()
 
-  const data = useStaticQuery(topicQuery)
-  const { topics } = data.file.childHomeJson
-
   useEffect(() => {
     const queryParams = {
       esPaginationOptions: {
@@ -154,16 +126,10 @@ export default function HomePage(): ReactElement {
 
   return (
     <>
+      <Intro />
       <Header />
-      <Boxes />
-      {(topics as TTopic[]).map((topic, i) => (
-        <Topic
-          key={topic.title}
-          svgComponent={topicSvgMap[topic.svg]}
-          topic={topic}
-          mirror={i % 2 === 1}
-        />
-      ))}
+      <Topics />
+      <Partners />
       <Permission eventType="browse">
         <>
           {queryLatest && (

@@ -22,7 +22,7 @@
 
 .button:hover,
 .button:focus {
-  color: var(--font-color-text);
+  color: var(--font-blue);
 }
 
 .input {
@@ -38,7 +38,6 @@
 .input:focus {
   width: calc(100% - var(--spacer));
   background-color: var(--background-content);
-  border-color: var(--brand-grey-lighter);
   position: fixed;
   left: calc(var(--spacer) / 2);
   right: 0;
@@ -46,12 +45,12 @@
 }
 
 .input::placeholder {
-  color: var(--brand-grey-lighter);
-  opacity: 1;
+  color: var(--brand-blue);
+  opacity: 0.8;
 }
 
 .input:focus::placeholder {
-  color: var(--font-color-text);
+  color: var(--font-blue);
 }
 
 @media screen and (min-width: 78rem) {

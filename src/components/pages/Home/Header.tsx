@@ -1,45 +1,35 @@
-import React, { ReactElement } from 'react'
-import styles from './Header.module.css'
-import { ReactComponent as DataXChange } from '../../../images/dataxchange.svg'
-import { ReactComponent as DeltadaoText } from '../../../images/deltaDAO_logo_text.svg'
 import { graphql, useStaticQuery } from 'gatsby'
+import React, { ReactElement } from 'react'
+import Markdown from '../../atoms/Markdown'
+import styles from './Header.module.css'
 
 const contentQuery = graphql`
-  query TaglineQuery {
-    file(relativePath: { eq: "pages/home/intro.json" }) {
-      childHomeJson {
-        desc
-        boxes {
-          title
-        }
+  query HeaderQuery {
+    intro: markdownRemark(
+      fileAbsolutePath: { regex: "/pages/home/header.md$/" }
+    ) {
+      frontmatter {
+        title
       }
+      rawMarkdownBody
     }
   }
 `
 
 export default function Header(): ReactElement {
   const data = useStaticQuery(contentQuery)
-  const { boxes, desc } = data.file.childHomeJson
+  const { frontmatter, rawMarkdownBody } = data.intro
 
   return (
     <div className={styles.container}>
-      <DeltadaoText className={styles.logoText} />
-      <DataXChange className={styles.dataXChange} />
-      <h1 className={styles.tagLine}>
-        {boxes.map((box: { title: string }, i: number) => (
-          <span key={i}>
-            {box.title}
-            {i === boxes.length - 1 ? (
-              ` ${desc}`
-            ) : (
-              <>
-                ,
-                <br />
-              </>
-            )}
-          </span>
-        ))}
-      </h1>
+      <div className={styles.content}>
+        <div className={styles.index}>
+          <p className={styles.fractionNumber}>20</p>
+          <p className={styles.fractionNumber}>21</p>
+        </div>
+        <h2>{frontmatter.title}</h2>
+        <Markdown text={rawMarkdownBody} />
+      </div>
     </div>
   )
 }

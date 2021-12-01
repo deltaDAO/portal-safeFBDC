@@ -1,5 +1,5 @@
 .network {
-  border: 1px solid var(--border-color);
+  border: 1px solid var(--brand-blue);
   border-right: none;
   border-top-left-radius: var(--border-radius);
   border-bottom-left-radius: var(--border-radius);
@@ -12,13 +12,13 @@
 
 .name {
   font-size: var(--font-size-small);
-  color: var(--brand-grey-dimmed);
+  color: var(--brand-blue);
 }
 
 .badge {
   margin-left: calc(var(--spacer) / 8);
-  background-color: var(--brand-grey-dark);
-  color: var(--brand-grey-dimmed);
+  background-color: var(--color-primary);
+  color: var(--brand-white);
 }
 
 .warning {

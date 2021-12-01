@@ -25,8 +25,6 @@ export default function Page({
     <>
       <Seo title={title} description={description} uri={uri} />
 
-      <Gradient />
-
       <Container>
         {title && !noPageHeader && (
           <PageHeader

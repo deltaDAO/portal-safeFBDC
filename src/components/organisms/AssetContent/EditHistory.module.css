@@ -13,7 +13,7 @@
   position: relative;
   display: block;
   margin-bottom: calc(var(--spacer) / 4);
-  color: var(--color-secondary);
+  color: var(--color-primary);
 }
 
 .item::before {
