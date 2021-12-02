@@ -55,7 +55,7 @@ export function getWhitelistShould(): // eslint-disable-next-line camelcase
     .map(([field, whitelist]) =>
       whitelist.map((address) => getFilterTerm(field, address, 'match'))
     )
-    .reduce((prev, cur) => prev.concat(cur))
+    .reduce((prev, cur) => prev.concat(cur), [])
 
   return whitelistFilterTerms.length > 0
     ? {
