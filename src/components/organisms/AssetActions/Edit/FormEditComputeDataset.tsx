@@ -13,7 +13,10 @@ import {
 } from '../../../../utils/aquarius'
 import { useAsset } from '../../../../providers/Asset'
 import { ComputePrivacyForm } from '../../../../models/FormEditComputeDataset'
-import { publisherTrustedAlgorithm as PublisherTrustedAlgorithm } from '@oceanprotocol/lib'
+import {
+  Logger,
+  publisherTrustedAlgorithm as PublisherTrustedAlgorithm
+} from '@oceanprotocol/lib'
 import { useSiteMetadata } from '../../../../hooks/useSiteMetadata'
 import FormActions from './FormActions'
 import { useCancelToken } from '../../../../hooks/useCancelToken'
@@ -49,12 +52,18 @@ export default function FormEditComputeDataset({
     const query = generateBaseQuery(baseParams)
     const querryResult = await queryMetadata(query, newCancelToken())
     const datasetComputeService = ddo.findServiceByType('compute')
+
+    Logger.log('queryResult', querryResult)
+
     const algorithmSelectionList = await transformDDOToAssetSelection(
-      datasetComputeService?.serviceEndpoint,
+      undefined,
       querryResult.results,
       publisherTrustedAlgorithms,
       newCancelToken()
     )
+
+    Logger.log('queryResult', algorithmSelectionList)
+
     return algorithmSelectionList
   }
 
