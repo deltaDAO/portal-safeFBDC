@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import styles from './Partners.module.css'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img, { FluidObject, GatsbyImageProps } from 'gatsby-image'
+import Markdown from '../../atoms/Markdown'
 
 interface partner {
   name: string
@@ -20,9 +21,20 @@ const partnersQuery = graphql`
   query partnersQuery {
     partners: file(relativePath: { eq: "pages/home/partners.json" }) {
       childHomeJson {
-        partners {
-          name
-          website
+        consortial {
+          title
+          content
+        }
+        contact {
+          title
+          content
+        }
+        hackathon {
+          title
+          partners {
+            name
+            website
+          }
         }
       }
     }
@@ -44,14 +56,19 @@ const partnersQuery = graphql`
 
 export default function Partners(): ReactElement {
   const data = useStaticQuery(partnersQuery)
-  const partners = data.partners.childHomeJson.partners.map((e: partner) => {
+  const { consortial, contact, hackathon } = data.partners.childHomeJson
+  const partners = hackathon.partners.map((e: partner) => {
     const logo = data.logos.edges.filter((x: logo) => x.node.name === e.name)
     return { ...e, logo: logo[0].node.childImageSharp.fluid }
   })
 
   return (
     <div className={styles.container}>
-      <h2 className={styles.title}>Partners</h2>
+      <h2 className={styles.title}>{consortial.title}</h2>
+      <Markdown className={styles.content} text={consortial.content} />
+      <h2 className={styles.title}>{contact.title}</h2>
+      <Markdown className={styles.content} text={contact.content} />
+      <h2 className={styles.title}>{hackathon.title}</h2>
       <div className={styles.list}>
         {partners.map((e: partnerWithLogo, i: number) => (
           <div key={i} className={styles.partner}>

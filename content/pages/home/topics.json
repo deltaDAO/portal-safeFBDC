@@ -2,13 +2,13 @@
   "topics": [
     {
       "svg": "data_sovereignty",
-      "title": "Data sovereignty is good...",
-      "content": "**Data sovereignty** can be defined as the ability for European citizens, businesses, policy makers and other actors to control who **accesses**, **processes** and **alters** their **data**, and **where it is stored**.The **FBDC** projects drives data sovereignty. It aims to create large datasets based on **European** rules, invest in **European** data capabilities and infrastructures, and **empower** corporates, individuals, and SMEs. At the same time, data sovereignty is a **necessary** but **insufficient** condition for **AI sovereignty**!"
+      "title": "Background",
+      "content": "[safeFBDC](https://techquartier.com/fbdc/) is a research project funded by the Federal Ministry for Economic Affairs and Energy (BMWi) with a three-year project duration (2021-2023). The consortium under the leadership of TechQuartier consists of eleven founding and 30+ associated partners covering a large part of the German financial industry and beyond. "
     },
     {
       "svg": "ai_sovereignty",
-      "title": "... but AI sovereignty is better!",
-      "content": "**AI sovereignty** for Europe is the ability to **access** the **most advanced** AI-enabling **technologies** and data on a **global level**, applied according to **European rules** and **values**. In the context of **FBDC**, we establish a **sovereign AI infrastructure** for the selected use cases and also as a **pioneering example** for the **financial industry in Europe**. We pursue different **strategic fields of action**: Develop **own AI methods** and **tools**, Reaching AI sovereignty, while not losing AI competitiveness and leveraging digital capabilities in the context of **explainable AI** (XAI)."
+      "title": "Implementation",
+      "content": "The safeFBDC project aims to create a holistic platform concept that encompasses both a trustworthy IT infrastructure and forward-looking AI-driven business models for the financial industry. At the heart of this is a dedicated technology stack that enables sensitive data to be shared teleologically, i.e., for a specific purpose, across organizations. The data owner always decides for which purpose the data may be used, e.g., for specific use cases, centralized or decentralized learning. The interest in the successful realization of safeFBDC is not limited to actors of financial markets; it is intended to serve the greater public good. This is a unique opportunity to establish a strong data ecosystem for the financial services market in Germany and beyond."
     }
   ]
 }
