@@ -1,6 +1,4 @@
-import React, { FormEvent, ReactElement, useEffect, useState } from 'react'
-import { useAddressConfig } from '../../hooks/useAddressConfig'
-import { useWeb3 } from '../../providers/Web3'
+import React, { FormEvent, ReactElement } from 'react'
 import Alert from './Alert'
 import Button from './Button'
 import styles from './ButtonBuy.module.css'
@@ -32,6 +30,7 @@ interface ButtonBuyProps {
   priceType?: string
   algorithmPriceType?: string
   algorithmConsumableStatus?: number
+  isWhitelisted?: boolean
 }
 
 function getConsumeHelpText(
@@ -141,12 +140,9 @@ export default function ButtonBuy({
   type,
   priceType,
   algorithmPriceType,
-  algorithmConsumableStatus
+  algorithmConsumableStatus,
+  isWhitelisted
 }: ButtonBuyProps): ReactElement {
-  const { accountId } = useWeb3()
-  const { isAddressWhitelisted } = useAddressConfig()
-  const [isWhitelisted, setIsWhitelisted] = useState(false)
-
   const buttonText =
     action === 'download'
       ? hasPreviousOrder
@@ -159,11 +155,6 @@ export default function ButtonBuy({
       : priceType === 'free' && algorithmPriceType === 'free'
       ? 'Order Compute Job'
       : `Buy Compute Job`
-
-  useEffect(() => {
-    if (!accountId) return
-    setIsWhitelisted(isAddressWhitelisted(accountId))
-  }, [accountId])
 
   return (
     <div className={styles.actions}>

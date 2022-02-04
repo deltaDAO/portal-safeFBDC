@@ -13,6 +13,7 @@ import { useAsset } from '../../../../providers/Asset'
 import { useOcean } from '../../../../providers/Ocean'
 import { useWeb3 } from '../../../../providers/Web3'
 import { BestPrice } from '../../../../models/BestPrice'
+import { CredentialType } from '../Edit/EditAdvancedSettings'
 
 const contentQuery = graphql`
   query StartComputeDatasetQuery {
@@ -105,6 +106,7 @@ export default function FormStartCompute({
   const { ocean } = useOcean()
   const [algorithmConsumableStatus, setAlgorithmConsumableStatus] =
     useState<number>()
+  const [isWhitelisted, setIsWhitelisted] = useState(true)
 
   function getAlgorithmAsset(algorithmId: string): DDO {
     let assetDdo = null
@@ -128,6 +130,13 @@ export default function FormStartCompute({
       if (consumable) setAlgorithmConsumableStatus(consumable.status)
     }
     checkIsConsumable()
+
+    const { result, status } = ocean.assets.checkCredential(
+      algorithmDDO,
+      CredentialType.address,
+      accountId
+    )
+    if (status === 2 || status === 3) setIsWhitelisted(result)
   }, [values.algorithm, accountId, isConsumable])
 
   //
@@ -220,6 +229,7 @@ export default function FormStartCompute({
         isConsumable={isConsumable}
         consumableFeedback={consumableFeedback}
         algorithmConsumableStatus={algorithmConsumableStatus}
+        isWhitelisted={isWhitelisted}
       />
     </Form>
   )
