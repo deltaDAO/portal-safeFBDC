@@ -49,6 +49,7 @@ import {
   SortTermOptions
 } from '../../../../models/SortAndFilters'
 import { SearchQuery } from '../../../../models/aquarius/SearchQuery'
+import { useAddressConfig } from '../../../../hooks/useAddressConfig'
 
 const SuccessAction = () => (
   <Button style="text" to="/profile?defaultTab=ComputeJobs" size="small">
@@ -71,6 +72,7 @@ export default function Compute({
 }): ReactElement {
   const { appConfig } = useSiteMetadata()
   const { accountId } = useWeb3()
+  const { isAddressWhitelisted } = useAddressConfig()
   const { ocean, account } = useOcean()
   const { price, type, ddo } = useAsset()
   const { buyDT, pricingError, pricingStepText } = usePricing()
@@ -409,8 +411,13 @@ export default function Compute({
     } catch (error) {
       await checkPreviousOrders(selectedAlgorithmAsset)
       await checkPreviousOrders(ddo)
-      setError('Failed to start job!')
-      Logger.error('[compute] Failed to start job: ', error.message)
+      if (!isAddressWhitelisted(accountId)) {
+        setError('Failed to start job: your wallet address is not authorized.')
+        Logger.error('[compute] Failed to start job: ', error.message)
+      } else {
+        setError('Failed to start job!')
+        Logger.error('[compute] Failed to start job: ', error.message)
+      }
     } finally {
       setIsJobStarting(false)
     }

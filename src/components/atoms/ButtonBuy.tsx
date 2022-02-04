@@ -1,4 +1,7 @@
-import React, { FormEvent, ReactElement } from 'react'
+import React, { FormEvent, ReactElement, useEffect, useState } from 'react'
+import { useAddressConfig } from '../../hooks/useAddressConfig'
+import { useWeb3 } from '../../providers/Web3'
+import Alert from './Alert'
 import Button from './Button'
 import styles from './ButtonBuy.module.css'
 import Loader from './Loader'
@@ -140,6 +143,10 @@ export default function ButtonBuy({
   algorithmPriceType,
   algorithmConsumableStatus
 }: ButtonBuyProps): ReactElement {
+  const { accountId } = useWeb3()
+  const { isAddressWhitelisted } = useAddressConfig()
+  const [isWhitelisted, setIsWhitelisted] = useState(false)
+
   const buttonText =
     action === 'download'
       ? hasPreviousOrder
@@ -153,12 +160,25 @@ export default function ButtonBuy({
       ? 'Order Compute Job'
       : `Buy Compute Job`
 
+  useEffect(() => {
+    if (!accountId) return
+    setIsWhitelisted(isAddressWhitelisted(accountId))
+  }, [accountId])
+
   return (
     <div className={styles.actions}>
       {isLoading ? (
         <Loader message={stepText} />
       ) : (
         <>
+          <div className={styles.warning}>
+            {action === 'compute' && !isWhitelisted && (
+              <Alert
+                text="Your account is not authorized to access this data service."
+                state="warning"
+              />
+            )}
+          </div>
           <Button
             style="primary"
             type={type}
