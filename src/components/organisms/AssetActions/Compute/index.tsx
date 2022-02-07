@@ -417,13 +417,12 @@ export default function Compute({
         CredentialType.address,
         accountId
       )
-      if (!result) {
-        setError(`Failed to start job: ${message.toLowerCase()}.`)
-        Logger.error('[compute] Failed to start job: ', error.message)
-      } else {
-        setError(`Failed to start job!`)
-        Logger.error('[compute] Failed to start job: ', error.message)
-      }
+
+      !result
+        ? setError(`Failed to start job: ${message.toLowerCase()}.`)
+        : setError(`Failed to start job!`)
+
+      Logger.error('[compute] Failed to start job: ', error.message)
     } finally {
       setIsJobStarting(false)
     }

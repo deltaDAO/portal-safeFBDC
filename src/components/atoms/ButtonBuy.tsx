@@ -30,7 +30,6 @@ interface ButtonBuyProps {
   priceType?: string
   algorithmPriceType?: string
   algorithmConsumableStatus?: number
-  isWhitelisted?: boolean
 }
 
 function getConsumeHelpText(
@@ -90,14 +89,9 @@ function getComputeAssetHelpText(
   )
   const computeAlgoHelpText =
     (!dtSymbolSelectedComputeAsset && !dtBalanceSelectedComputeAsset) ||
-    isConsumable === false
+    isConsumable === false ||
+    algorithmConsumableStatus > 0
       ? ''
-      : algorithmConsumableStatus === 1
-      ? 'The selected algorithm has been temporarily disabled by the publisher, please try again later.'
-      : algorithmConsumableStatus === 2
-      ? 'Access denied, your wallet address is not found on the selected algorithm allow list.'
-      : algorithmConsumableStatus === 3
-      ? 'Access denied, your wallet address is found on the selected algorithm deny list.'
       : hasPreviousOrderSelectedComputeAsset
       ? `You already bought the selected ${selectedComputeAssetType}, allowing you to use it without paying again.`
       : hasDatatokenSelectedComputeAsset
@@ -113,6 +107,18 @@ function getComputeAssetHelpText(
     ? computeAssetHelpText
     : `${computeAssetHelpText} ${computeAlgoHelpText}`
   return computeHelpText
+}
+
+function getAlgorithmConsumableStatusHelpText(
+  algorithmConsumableStatus: number
+) {
+  return algorithmConsumableStatus === 1
+    ? 'The selected algorithm has been temporarily disabled by the publisher, please try again later.'
+    : algorithmConsumableStatus === 2
+    ? 'Access denied, your wallet address is not found on the selected algorithm allow list.'
+    : algorithmConsumableStatus === 3
+    ? 'Access denied, your wallet address is found on the selected algorithm deny list.'
+    : ''
 }
 
 export default function ButtonBuy({
@@ -140,8 +146,7 @@ export default function ButtonBuy({
   type,
   priceType,
   algorithmPriceType,
-  algorithmConsumableStatus,
-  isWhitelisted
+  algorithmConsumableStatus
 }: ButtonBuyProps): ReactElement {
   const buttonText =
     action === 'download'
@@ -163,9 +168,11 @@ export default function ButtonBuy({
       ) : (
         <>
           <div className={styles.warning}>
-            {action === 'compute' && !isWhitelisted && (
+            {action === 'compute' && algorithmConsumableStatus > 0 && (
               <Alert
-                text="Your account is not authorized to access this data service."
+                text={getAlgorithmConsumableStatusHelpText(
+                  algorithmConsumableStatus
+                )}
                 state="warning"
               />
             )}
