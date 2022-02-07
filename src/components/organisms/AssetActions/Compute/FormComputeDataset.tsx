@@ -126,7 +126,7 @@ export default function FormStartCompute({
         algorithmDDO,
         accountId.toLowerCase()
       )
-      if (!consumable?.result) {
+      if (consumable?.result === false) {
         setAlgorithmConsumableStatus(consumable.status)
       } else {
         const hasValidCredentials = ocean.assets.checkCredential(

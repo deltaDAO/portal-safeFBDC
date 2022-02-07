@@ -418,7 +418,7 @@ export default function Compute({
         accountId
       )
 
-      !result
+      result === false
         ? setError(`Failed to start job: ${message.toLowerCase()}.`)
         : setError(`Failed to start job!`)
 

@@ -118,7 +118,7 @@ function getAlgorithmConsumableStatusHelpText(
     ? 'Access denied, your wallet address is not found on the selected algorithm allow list.'
     : algorithmConsumableStatus === 3
     ? 'Access denied, your wallet address is found on the selected algorithm deny list.'
-    : ''
+    : 'The selected algorithm is currently not available. You may try again later.'
 }
 
 export default function ButtonBuy({
