@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react'
 import { BestPrice } from '../../../../models/BestPrice'
 import { useAsset } from '../../../../providers/Asset'
+import Loader from '../../../atoms/Loader'
 import PriceUnit from '../../../atoms/Price/PriceUnit'
 import Tooltip from '../../../atoms/Tooltip'
 import styles from './PriceOutput.module.css'
