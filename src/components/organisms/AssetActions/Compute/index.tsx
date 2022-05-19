@@ -96,6 +96,9 @@ export default function Compute({
   const [algorithmTimeout, setAlgorithmTimeout] = useState<string>()
   const newCancelToken = useCancelToken()
   const hasDatatoken = Number(dtBalance) >= 1
+  const [hasAlgorithmPriceUpdated, setHasAlgorithmPriceUpdated] =
+    useState(false)
+
   const isMounted = useIsMounted()
   const [isConsumablePrice, setIsConsumablePrice] = useState(true)
   const [isAlgoConsumablePrice, setIsAlgoConsumablePrice] = useState(true)
@@ -103,6 +106,7 @@ export default function Compute({
     isJobStarting === true ||
     file === null ||
     !ocean ||
+    !hasAlgorithmPriceUpdated ||
     (!hasPreviousDatasetOrder && !hasDatatoken && !isConsumablePrice) ||
     (!hasPreviousAlgorithmOrder &&
       !hasAlgoAssetDatatoken &&
@@ -194,8 +198,10 @@ export default function Compute({
 
   const initMetadata = useCallback(async (ddo: DDO): Promise<void> => {
     if (!ddo) return
+    setHasAlgorithmPriceUpdated(false)
     const price = await getPrice(ddo)
     setAlgorithmPrice(price)
+    setHasAlgorithmPriceUpdated(true)
   }, [])
 
   useEffect(() => {
@@ -456,6 +462,7 @@ export default function Compute({
           <FormStartComputeDataset
             algorithms={algorithmList}
             ddoListAlgorithms={ddoAlgorithmList}
+            selectedAlgorithm={selectedAlgorithmAsset}
             setSelectedAlgorithm={setSelectedAlgorithmAsset}
             isLoading={isJobStarting}
             isComputeButtonDisabled={isComputeButtonDisabled}
@@ -477,6 +484,7 @@ export default function Compute({
             selectedComputeAssetTimeout={algorithmTimeout}
             stepText={pricingStepText || 'Starting Compute Job...'}
             algorithmPrice={algorithmPrice}
+            hasAlgorithmPriceUpdated={hasAlgorithmPriceUpdated}
             isConsumable={isConsumable}
             consumableFeedback={consumableFeedback}
           />
