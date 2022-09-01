@@ -4,6 +4,7 @@ import { AbiItem } from 'web3-utils/types'
 import Web3 from 'web3'
 import { chains } from '../../chains.config'
 import { ConfigHelperConfigOverwrite } from '../@types/Chains'
+import { metadataCacheUri } from '../../app.config'
 
 export function getOceanConfig(network: string | number): ConfigHelperConfig {
   const config = new ConfigHelper().getConfig(
@@ -24,6 +25,8 @@ export function getOceanConfig(network: string | number): ConfigHelperConfig {
     (c) => c.networkId === config.networkId
   )
 
+  config.metadataCacheUri = metadataCacheUri
+
   return configOverwrite
     ? {
         ...config,
@@ -40,7 +43,7 @@ export function getDevelopmentConfig(): Partial<ConfigHelperConfig> {
     metadataContractAddress: contractAddresses.development?.Metadata,
     oceanTokenAddress: contractAddresses.development?.Ocean,
     // There is no subgraph in barge so we hardcode the Rinkeby one for now
-    subgraphUri: 'https://subgraph.rinkeby.oceanprotocol.com'
+    subgraphUri: 'https://subgraph.gaiaxtestnet.oceanprotocol.com'
   }
 }
 
